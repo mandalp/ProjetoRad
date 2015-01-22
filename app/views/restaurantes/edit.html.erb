@@ -1,0 +1,56 @@
+<%= render partial: "titulo" %>
+
+<h1 align = "center" class="titulo"><font color="#9B1C26">Editar Restaurante</font></h1>
+
+
+<% if @restaurante.errors.any? %>
+	<ul>
+	<% @restaurante.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+	</ul>
+
+<% end %>
+
+
+<table align="center">
+	<tr >
+		<td >
+			<font size="6">
+				<%= form_for :restaurante, url: {action: 'update', id: @restaurante}, :html => {:multipart => true} do |f| %>
+					
+						<font size="6" color="darkgrey">Nome: </font>
+						<%= f.text_field :nome %><br/>
+					
+					<br>
+
+						<font size="6" color="darkgrey">Endereço: </font>
+						<%= f.text_field :endereco %><br/>
+					
+					<br>
+
+						<font size="6" color="darkgrey">Especialidade: </font>
+						<%= f.text_field :especialidade %><br/>
+					
+					<br>
+
+						<font size="6" color="darkgrey">Foto: </font>
+						<%= f.file_field :foto %><br/>
+					
+					<br>
+					<br>
+					
+					<%= submit_tag 'Atualizar' %>
+				<% end %>
+			</font>
+		</td>
+	</tr>
+</table>
+
+<table align="center" class="titulo2">
+	<td align="center">
+		<font size="6">
+<%= link_to 'Voltar', action: 'index' %>	
+		</font>
+	</td>
+</table>
