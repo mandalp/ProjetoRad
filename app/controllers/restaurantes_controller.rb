@@ -1,18 +1,25 @@
-#encoding:utf-8
 class RestaurantesController < ApplicationController
-
-	 before_filter :authenticate_user!, :except => [:index,:show]
-	 
+	
+	before_filter :authenticate_user!, :except => [:index,:show]
+	
+	respond_to :html, :xml 
 	def index
-		@restaurantes = Restaurante.order("nome").page(params['page']).per(5)
+		#@restaurantes = Restaurante.order("restaurante_id").page(params['page']).per(5)
+		@restaurantes = Restaurante.all
+		respond_with @restaurantes
 	end
+
 
 	def show
 		@restaurante = Restaurante.find(params[:id])
+		respond_with @restaurantes
+
 	end
 
 	def new
 		@restaurante = Restaurante.new
+		respond_with @restaurantes
+
 	end
 
 	def create
@@ -53,4 +60,18 @@ class RestaurantesController < ApplicationController
 			redirect_to :action => 'index'
 		end
 	end
+	
+	def response
+	end
+	
+	private
+    # Use callbacks to share common setup or constraints between actions.
+    #def set_restaurantes
+      #@restaurante = Restaurante.friendly.find(params[:id])
+    #end
+    
+        # Never trust parameters from the scary internet, only allow the white list through.
+    def restaurantes_params
+      params.require(:restaurante).permit(:belongs_to, :nome)
+    end
 end

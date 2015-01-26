@@ -25,7 +25,7 @@
     <%= f.hidden_field 'restaurante' %>
     <%else%>
     <p><font color="darkgrey" size="6"><%= f.label :restaurante_id %><br /><font>
-    <%= f.collection_select(:restaurante_id, Restaurante.order('nome'), :id, :nome, {:prompt => true}) %></p>
+      <%= f.collection_select(:restaurante_id, Restaurante.order('nome'), :id, :nome, {:prompt => true}) %></p>
     <%end%>
   </div>
 

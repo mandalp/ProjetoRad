@@ -1,54 +1,23 @@
-<%= render partial: "titulo" %>
-
-<h1 align="center" class="titulo"><font color="#9B1C26">Restaurantes Cadastrados</font></h1>
-<table height="50%" width="80%" align="center" color="#000" >
-	<br>
-	<br>
-	<br>
-
+<h2 class="center">Restaurantes Cadastrados</h2>
+<br>
+<table class="table table-striped table-bordered table-hover center">
 	<tr>
-		<th><font color="#9B1C26" size="6">Nome</font></th>
-		<th><font color="#9B1C26" size="6">Endereço</font></th>
-		<th><font color="#9B1C26" size="6">Especialidade</font></th>
-		<th colspan="3"><font color="#9B1C26" size="6">Controle de Cadastros</font></th>
+		<th>Nome</th>
+		<th>Endereço</th>
+		<th>Especialidade</th>
 	</tr>
-
 <% @restaurantes.each do |restaurante| %>
-	
 	<tr>
-
-		<td ><font color="darkgrey" size="6"><%= restaurante.nome %></font></td>
-		<td ><font color="darkgrey" size="6"><%= restaurante.endereco %></font></td>
-		<td ><font color="darkgrey" size="6"><%= restaurante.especialidade %></font></td>
-		<td align="center"><font color="black" size="6"><%= link_to 'Mostrar', action: 'show', id: restaurante %></font></td>
-		<td align="center"><font color="grey" size="6"><%= link_to 'Editar', action: 'edit', id: restaurante %></font></td>
-		<td align="center"><font color="grey" size="6"><%= link_to 'Deletar', action: 'destroy', id: restaurante %></font></td>
+		<td><%= restaurante.nome %></td>
+		<td><%= restaurante.endereco %></td>
+		<td><%= restaurante.especialidade %></td>
+		<td><%= link_to 'Mostrar', action: 'show' %></td>
+		<td><%= link_to 'Editar', action: 'edit'%></td>
+		<td><%= link_to 'Deletar', action: 'destroy'%></td>
 	</tr>
-
 <% end %>
-
 </table>
+<br>
+<b><%= link_to 'Novo Restaurante', action: 'new' %></b>
 
-<br>
-<br>
-<br>
-<br>
 
-<y align="center" class="fonte">
-<center><%= paginate @restaurantes %>
-</y>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<font class="novo" size="6">
-	<!--<%= link_to 'Novo', action: 'new' %>-->
-
-<a class="bt" href="http://localhost:3000/restaurantes/new" title="Novo Restaurante">
-	<font color="white">Novo Restaurante</font>
-</a>	
-</font>

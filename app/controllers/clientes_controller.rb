@@ -1,20 +1,19 @@
 class ClientesController < ApplicationController
-before_filter :authenticate_user!, :except => [:index,:show]
+  before_filter :authenticate_user!, :except => [:index,:show]
 
   respond_to :html, :xml
   # GET /clientes
   # GET /clientes.json
   def index
-    @clientes = Cliente.order("nome").page(params['page']).per(5)
-
-   respond_with @clientes
+    
+    @clientes = Cliente.order("nome").page(params['page']).per(2)
+    respond_with @clientes
   end
 
   # GET /clientes/1
   # GET /clientes/1.json
   def show
     @cliente = Cliente.find(params[:id])
-
     respond_with @cliente
   end
 
@@ -22,15 +21,9 @@ before_filter :authenticate_user!, :except => [:index,:show]
   # GET /clientes/new.json
   def new
     @cliente = Cliente.new
-
     respond_with @cliente
   end
-
-  # GET /clientes/1/edit
-  def edit
-    @cliente = Cliente.find(params[:id])
-  end
-
+  
   # POST /clientes
   # POST /clientes.json
   def create
@@ -38,13 +31,18 @@ before_filter :authenticate_user!, :except => [:index,:show]
 
     respond_to do |format|
       if @cliente.save
-        format.html { redirect_to @cliente, notice: 'Cliente was successfully created.' }
+        format.html { redirect_to @cliente, notice: 'Cliente creado com sucesso.' }
         format.json { render json: @cliente, status: :created, location: @cliente }
       else
         format.html { render action: "new" }
         format.json { render json: @cliente.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /clientes/1/edit
+  def edit
+    @cliente = Cliente.find(params[:id])
   end
 
   # PUT /clientes/1
@@ -54,7 +52,7 @@ before_filter :authenticate_user!, :except => [:index,:show]
 
     respond_to do |format|
       if @cliente.update_attributes(params[:cliente])
-        format.html { redirect_to @cliente, notice: 'Cliente was successfully updated.' }
+        format.html { redirect_to @cliente, notice: 'Cliente atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

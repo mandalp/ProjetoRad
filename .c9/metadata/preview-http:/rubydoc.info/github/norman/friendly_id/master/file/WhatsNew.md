@@ -1,0 +1,1 @@
+{"filter":false,"title":"[P] http://rubydoc.info/github/norman/friendly_id/master/file/WhatsNew.md","undoManager":{"mark":0,"position":-1,"stack":[]},"preview":{"path":"http://rubydoc.info/github/norman/friendly_id/master/file/WhatsNew.md","previewer":"preview.markdown"},"timestamp":1422272512930,"hash":"da39a3ee5e6b4b0d3255bfef95601890afd80709"}

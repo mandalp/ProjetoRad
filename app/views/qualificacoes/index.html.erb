@@ -1,56 +1,27 @@
-<h1 class="titulo" align="center"><font color="#9B1C26">Lista de Qualificacoes</h1>
-
-<table align="center" width="80%">
- 
-  <br>
-  <br>
-  <br>
-
+<h2 class="center">Lista de Qualificacoes</h2>
+<br>
+<table class="table table-striped table-bordered table-hover center">
   <tr>
-    <th><font color="#9B1C26" size="6" align="center">Cliente</font></th>
-    <th><font color="#9B1C26" size="6" align="center">Restaurante</font></th>
-    <th><font color="#9B1C26" size="6" align="center">Nota</font></th>
-    <th><font color="#9B1C26" size="6" align="center">Valor gasto</font></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Cliente</th>
+    <th>Restaurante</th>
+    <th>Nota</th>
+    <th>Valor gasto</th>
   </tr>
-
 <% @qualificacoes.each do |qualificacao| %>
   <tr>
-    <td><font color="darkgrey" size="6"><%= qualificacao.cliente.nome %></td>
-    <td align="center"><font color="darkgrey" size="6"><%= qualificacao.restaurante.nome %></td>
-    <td align="center"><font color="darkgrey" size="6"><%= qualificacao.nota %></td>
-    <td align="center"><font color="darkgrey" size="6"><%= qualificacao.valor_gasto %></td>
-    <td align="center"><font color="darkgrey" size="6"><%= link_to 'Mostrar', qualificacao %></td>
-    <td align="center"><font color="darkgrey" size="6"><%= link_to 'Editar', edit_qualificacao_path(qualificacao) %></td>
-    <td align="center"><font color="darkgrey" size="6"><%= link_to 'Remover', qualificacao, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+    <td><%= qualificacao.cliente.nome %></td>
+    <td><%= qualificacao.restaurante.nome %></td>
+    <td><%= qualificacao.nota %></td>
+    <td><%= valor_formatado(qualificacao.valor_gasto) %></td>
+    <td><%= link_to 'Mostrar', qualificacao %></td>
+    <td><%= link_to 'Editar', edit_qualificacao_path(qualificacao) %></td>
+    <td><%= link_to 'Remover', qualificacao, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
   </tr>
 <% end %>
 </table>
+<br>
+<b><%= link_to 'Nova Qualificação', action: 'new' %></b>
 
-<br>
-<br>
-<br>
-<y align="center" class="fonte">
-<center><%= paginate @qualificacoes %>
-</y>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<font class="novo" size="6">
-  <!--<%= link_to 'Novo', action: 'new' %>-->
-
-<a class="bt" href="http://localhost:3000/qualificacoes/new" title="Nova Qualificação">
-  <font color="white">Nova Qualificação</font>
-</a>  
-</font>
 
 

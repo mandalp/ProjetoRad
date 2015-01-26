@@ -1,50 +1,23 @@
-<h1 align="center" class="titulo"><font color="#9B1C26">Clientes</font></h1>
-
-<table class="tabelacor" align="center">
-  <br>
-  <br>
-  <br>
-
+<h2 class="center">Clientes</h2>
+<br>
+<table class="table table-striped table-bordered table-hover center">
   <tr>
-    <th><font color="#9B1C26" size="6">Nome</font></th>
-    <th><font color="#9B1C26" size="6">Idade</font></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Nome</th>
+    <th>Idade</th>
   </tr>
 
 <% @clientes.each do |cliente| %>
   <tr>
-    <td><font color="darkgrey" size="6"><%= cliente.nome %></font></td>
-    <td><font color="darkgrey" size="6"><%= cliente.idade %></font></td>
-    <td><font color="darkgrey" size="6"><%= link_to 'Mostrar', cliente %></font></td>
-    <td><font color="darkgrey" size="6"><%= link_to 'Editar', edit_cliente_path(cliente) %></font></td>
-    
-
-    
+    <td><%= cliente.nome %></td>
+    <td><%= cliente.idade %></td>
+    <td><%= link_to 'Mostrar', cliente %></td>
+    <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
   </tr>
 <% end %>
 </table>
-
 <br>
+<%= paginate @clientes %>
 <br>
-<br>
-<br>
-
-<y align="center" class="fonte">
-<center><%= paginate @clientes %>
-</y>
+<b><%= link_to 'Novo Cliente', action: 'new'%></b>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<font class="novo" size="6">
-  <!--<%= link_to 'Novo', action: 'new' %>-->
-
-<a class="bt" href="http://localhost:3000/clientes/new" title="Novo Cliente"><font color="white">Novo Cliente</font></a>  
-</font>
