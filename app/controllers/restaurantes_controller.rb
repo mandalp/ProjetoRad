@@ -4,32 +4,33 @@ class RestaurantesController < ApplicationController
 	
 	respond_to :html, :xml,  :json
 	def index
-		#@restaurantes = Restaurante.order("restaurante_id").page(params['page']).per(5)
-		@restaurantes = Restaurante.all
+		@restaurantes = Restaurante.order("nome").page(params['page'])
 		respond_with @restaurantes
 	end
 
-
 	def show
 		@restaurante = Restaurante.find(params[:id])
-		respond_with @restaurantes
-
+		respond_with @restaurante
 	end
 
 	def new
 		@restaurante = Restaurante.new
-		respond_with @restaurantes
+		respond_with @restaurante
 
 	end
 
 	def create
 		@restaurante = Restaurante.new(params[:restaurante])
-		if @restaurante.save
-			redirect_to(action: "show", id: @restaurante)
-		else
-			render action: "new"
-		end
-	end
+    respond_to do |format|
+      if @restaurante.save
+        format.html { redirect_to @restaurante, notice: 'Restaurante criado com sucesso.' }
+        format.json { render json: @restaurante, status: :created, location: @restaurante }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @restaurante.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 	def edit
 		@restaurante = Restaurante.find(params[:id])
@@ -37,41 +38,36 @@ class RestaurantesController < ApplicationController
 
 	def update
 		@restaurante = Restaurante.find(params[:id])
-		if @restaurante.update_attributes(params[:restaurante])
-			redirect_to(action: "show", id: @restaurante)
-		else
-			render action: "edit"
-		end
-	end
+    respond_to do |format|
+      if @restaurante.update_attributes(params[:cliente])
+        format.html { redirect_to @restaurante, notice: 'Restaurante atualizado com sucesso.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @restaurante.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 	def destroy
 		@restaurante = Restaurante.find(params[:id])
 		@restaurante.destroy
 
-		redirect_to(action: "index")
-	end
-
-	def busca
-		@restaurante = Restaurante.find_by_nome(params[:nome])
-		if @restaurante
-			redirect_to :action => 'show', :id => @restaurante.id
-		else
-			flash[:notice] = 'Restaurante não encontrado.'
-			redirect_to :action => 'index'
-		end
-	end
-	
-	def response
-	end
-	
-	private
-    # Use callbacks to share common setup or constraints between actions.
-    #def set_restaurantes
-      #@restaurante = Restaurante.friendly.find(params[:id])
-    #end
-    
-        # Never trust parameters from the scary internet, only allow the white list through.
-    def restaurantes_params
-      params.require(:restaurante).permit(:belongs_to, :nome)
+    respond_to do |format|
+      format.html { redirect_to restaurantes_url }
+      format.json { head :no_content }
     end
+  end
+
+	# def busca
+	# 	@restaurante = Restaurante.find_by_nome(params[:nome])
+	# 	if @restaurante
+	# 		redirect_to :action => 'show', :id => @restaurante.id
+	# 	else
+	# 		flash[:notice] = 'Restaurante não encontrado.'
+	# 		redirect_to :action => 'index'
+	# 	end
+	# end
+	
+
 end

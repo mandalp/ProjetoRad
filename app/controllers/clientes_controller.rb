@@ -1,12 +1,12 @@
 class ClientesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index,:show]
 
-  respond_to :html, :xml
+  respond_to :html, :xml,  :json
   # GET /clientes
   # GET /clientes.json
   def index
     
-    @clientes = Cliente.order("nome").page(params['page']).per(2)
+    @clientes = Cliente.order("nome").page(params['page'])
     respond_with @clientes
   end
 
@@ -31,7 +31,7 @@ class ClientesController < ApplicationController
 
     respond_to do |format|
       if @cliente.save
-        format.html { redirect_to @cliente, notice: 'Cliente creado com sucesso.' }
+        format.html { redirect_to @cliente, notice: 'Cliente criado com sucesso.' }
         format.json { render json: @cliente, status: :created, location: @cliente }
       else
         format.html { render action: "new" }

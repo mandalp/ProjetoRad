@@ -1,91 +1,49 @@
 <%= render partial: "titulo" %>
 
-<h1 align = "center" class="titulo"><font color="#9B1C26">Exibindo Restaurante</font></h1>
+<h2 class="center">Exibindo Restaurante</h2>
 
 <table align="center">
 	<tr>
 		<td align="left">
-			<font size="6" >
 				<p>
-					<font color="darkgrey" size="6">
-						<b><font color="#9b1c26">Nome: </font></b>
-						<%= @restaurante.nome %>
-					</font>
+					<b>Nome: </b>
+					<%= @restaurante.nome %>
 				</p>
-
 				<p >
-					<font color="darkgrey" size="6">
-						<b><font color="#9b1c26">Endereço: </font></b>
-						<%= @restaurante.endereco %>
-					</font>
+					<b>Endereço: </b>
+					<%= @restaurante.endereco %>
 				</p>
-
 				<p>
-					<font color="darkgrey" size="6">
-						<b><font color="#9b1c26">Especialidade: </font></b>
-						<%= @restaurante.especialidade %>
-					</font>
+					<b>Especialidade: </b>
+					<%= @restaurante.especialidade %>
 				</p>
-
 				<p>
-					<font color="darkgrey" size="6">
-						<b><font color="#9b1c26">Nota Média: </font></b>
-						<%= @restaurante.qualificacoes.average(:nota) %></br>
-					</font>
+					<b>Nota Média: </b>
+					<%= @restaurante.qualificacoes.average(:nota) %></br>
 				</p>	
-
 				<p>
-					<font color="darkgrey" size="6">
-						<b><font color="#9b1c26">Qualificações: </font></b>
-						<%= @restaurante.qualificacoes.count %></br>
-					</font>
+					<b>Qualificações: </b>
+					<%= @restaurante.qualificacoes.count %></br>
 				</p>
-
 				<p>
-					<font color="darkgrey" size="6">
-						<b><font color="#9b1c26">Preço médio: </font></b>
-						<%= @restaurante.qualificacoes.average(:valor_gasto) %></br>
-					</font>
-				</p>
-
-				
-				<p>
-					<font color="#9b1c26" size="6">
-						<b>Foto:</b>
-					</font>
-				</p>
-
-				<p align="center">
-					<%= image_tag @restaurante.foto.url(:thumb) %>
+					<b>Preço médio: </b>
+					<%= @restaurante.qualificacoes.average(:valor_gasto) %></br>
 				</p>
 
 				<b>
-				<%= link_to "Qualificar este restaurante", :controller => "qualificacoes", :action => "new", :restaurante => @restaurante %>
-
+				<%= link_to "Qualificar este restaurante", :controller => "qualificacoes", :action => "new", :restaurante => @restaurante %><br />
 				<%= link_to 'Editar', action: 'edit', id: @restaurante %>
 				<%= link_to 'Voltar', action: 'index' %>
 				</b>
-
-				<font size="6" color="#9B1C26">
-					<% unless @restaurante.comentarios.empty?%>
+				<% unless @restaurante.comentarios.empty?%>
 					<%= comentarios @restaurante %>
-					<%end%>
-				</font>
-
-			</font>
+				<%end%>
 		</td>
 	</tr>
 </table>
 
 <br>
-<br>
-
-<font class="novo" size="6">
-	<s class="bt" title="Novo Comentário" style="text-decoration:none">
-		<font color="white"><%= novo_comentario(@restaurante) %></font>
-	</s>
-</font>
-
-<br>
-<br>
+<s class="bt" title="Novo Comentário" style="text-decoration:none">
+	<font color="white"><%= novo_comentario(@restaurante) %>
+</s>
 <br>

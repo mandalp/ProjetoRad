@@ -3,27 +3,25 @@
 <table align="center">
 	<tr>
 		<td>
-			<font size="6">
 <p>
-  <b><font color="#9B1C26">Cliente:</font></b>
-  <font color="grey"><%= @qualificacao.cliente_id %></font>
+  <b>Cliente:</b>
+  <%= @qualificacao.cliente_id %>
 </p>
 
 <p>
-  <b><font color="#9B1C26">Restaurante:</font></b>
-  <font color="grey"><%= @qualificacao.restaurante_id %></font>
+  <b>Restaurante:</b>
+  <%= @qualificacao.restaurante_id %>
 </p>
 
 <p>
-  <b><font color="#9B1C26">Nota:</font></b>
-  <font color="grey"><%= @qualificacao.nota %></font>
+  <b>Nota:</b>
+  <%= @qualificacao.nota %>
 </p>
 
 <p>
-  <b><font color="#9B1C26">Valor gasto:</font></b>
-  <font color="grey"><%= valor_formatado(@qualificacao.valor_gasto) %></font>
+  <b>Valor gasto:</b>
+  <%= valor_formatado(@qualificacao.valor_gasto) %>
 </p>
-			</font>
 		</td>
 	</tr>
 </table>
@@ -31,11 +29,9 @@
 <table align="center" class="titulo2">
 	<tr>
 		<td>
-			<font size="6">
 <%= link_to "Nova qualificacao", :controller => 'qualificacoes', 
 :action => "new",
 :cliente => @cliente %>
-			</font>
 		</td>
 	</tr>
 </table>
@@ -43,19 +39,19 @@
 <table align="center" class="titulo2">
 	<tr>
 		<td>
-			<font size="6" style="text-decoration:none">
+			
 <%= novo_comentario(@qualificacao) %>
-			</font>
+			
 		</td>
 	</tr>
 </table>
 
 <table align="center" class="titulo2">
 	<td>
-		<font size="6">
+		
 <%= link_to 'Editar', edit_qualificacao_path(@qualificacao) %> |
 <%= link_to 'Voltar', qualificacoes_path %>
-		</font>
+		
 	</td>
 </table>
 

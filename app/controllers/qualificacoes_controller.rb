@@ -12,7 +12,7 @@ class QualificacoesController < ApplicationController
   # GET /qualificacoes/1.json
   def show
     @qualificacao = Qualificacao.find(params[:id])
-    respond_with @qualificacao
+    #respond_with @qualificacao
   end
 
   # GET /qualificacoes/new

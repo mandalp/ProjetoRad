@@ -8,8 +8,7 @@ VotaPrato::Application.routes.draw do
   resources :qualificacoes
   
   resources :restaurantes
-
-
+  
   resources :clientes
 
 

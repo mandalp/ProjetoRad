@@ -31,8 +31,6 @@ gem 'turbolinks'
 
 gem 'jquery-rails'
 
-gem 'kaminari'
-
 gem 'paperclip'
 
 gem 'hpricot'

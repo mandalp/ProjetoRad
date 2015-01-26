@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 class Restaurante < ActiveRecord::Base
-  attr_accessible :nome, :endereco, :especialidade, :foto
+  attr_accessible :nome, :endereco, :especialidade
 
   validates_presence_of :nome, message: "deve ser preenchido"
   validates_presence_of :endereco, message: "deve ser preenchido"
