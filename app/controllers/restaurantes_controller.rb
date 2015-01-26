@@ -2,7 +2,7 @@ class RestaurantesController < ApplicationController
 	
 	before_filter :authenticate_user!, :except => [:index,:show]
 	
-	respond_to :html, :xml 
+	respond_to :html, :xml,  :json
 	def index
 		#@restaurantes = Restaurante.order("restaurante_id").page(params['page']).per(5)
 		@restaurantes = Restaurante.all

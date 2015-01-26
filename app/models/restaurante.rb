@@ -11,19 +11,9 @@ class Restaurante < ActiveRecord::Base
 
   has_many :qualificacoes
   has_many :comentarios, :as => :comentavel
-  has_and_belongs_to_many :pratos
+  #has_and_belongs_to_many :pratos
 
-private
-    def primeira_letra_deve_ser_maiuscula
-      errors.add(:nome,
-         "primeira letra deve ser maiúscula") unless nome =~ /[A-Z].*/
-    end
-    
-    def self.search(search, page)
-      paginate :per_page => 5, :page => page,
-               :conditions => ['nome like ?', "%#{search}%"],
-               :order => 'nome'
-    end
+
     
 
 end
